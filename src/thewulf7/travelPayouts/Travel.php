@@ -2,7 +2,7 @@
 namespace thewulf7\travelPayouts;
 
 
-use thewulf7\travelPayouts\components\Client;
+use thewulf7\travelPayouts\components\iClient;
 use thewulf7\travelPayouts\components\ServiceInjector;
 
 /**
@@ -15,39 +15,36 @@ class Travel
     use ServiceInjector;
 
     /**
-     * @var Client
+     * @var iClient
      */
     private $_client;
 
     /**
-     * @var string
+     * @param iClient $client
      */
-    private $_token;
-
-    /**
-     * @param string $token
-     */
-    public function __construct($token = '')
+    public function __construct(iClient $client)
     {
-        if ($token !== '')
-        {
-            $this->setToken($token);
-        }
-    }
-
-    private function init()
-    {
-        $this->_client = new Client($this->getToken());
+        $this->setClient($client);
     }
 
     /**
      * Get client
      *
-     * @return Client
+     * @return iClient
      */
     public function getClient()
     {
         return $this->_client;
+    }
+
+    /**
+     * Get client
+     *
+     * @param iClient $client
+     */
+    protected function setClient(iClient $client)
+    {
+        $this->_client = $client;
     }
 
     /**
@@ -57,21 +54,6 @@ class Travel
      */
     public function getToken()
     {
-        return $this->_token;
-    }
-
-    /**
-     * Set token
-     *
-     * @param string $token
-     *
-     * @return Travel
-     */
-    public function setToken($token)
-    {
-        $this->_token = $token;
-        $this->init();
-
-        return $this;
+        return $this->_client->getToken();
     }
 }

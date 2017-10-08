@@ -10,6 +10,7 @@ use GuzzleHttp\Client as HttpClient;
  * @package thewulf7\travelPayouts\components
  */
 class Client
+    implements iClient
 {
     /**
      *

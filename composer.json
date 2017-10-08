@@ -1,11 +1,15 @@
 {
-    "name": "thewulf7/travel-payouts",
-    "description": "PHP SDK for travelpayouts.com",
+    "name": "greevex/travel-payouts",
+    "description": "PHP SDK for travelpayouts.com (forked from thewulf7/travel-payouts)",
     "license": "MIT",
     "authors": [
         {
             "name": "Johnny Utkin",
             "email": "thewulf7@me.com"
+        },
+        {
+            "name": "Gregory Ostrovsky",
+            "email": "greevex@gmail.com"
         }
     ],
     "minimum-stability": "dev",
